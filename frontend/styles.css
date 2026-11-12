@@ -1,0 +1,53 @@
+:root { --bg:#f5f6f8; --card:#fff; --ink:#1c2330; --muted:#667085; --line:#dfe3ea; --brand:#2f6fed; --brand-ink:#fff; --danger:#c8372d; --ok:#1c8a4f; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#12161d; --card:#1b212b; --ink:#e8ebf0; --muted:#98a2b3; --line:#2b3340; --brand:#5b8def; --danger:#ef6a5f; --ok:#4cc38a; }
+}
+* { box-sizing: border-box; }
+body { margin:0; font:15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; background:var(--bg); color:var(--ink); }
+h1,h2,h3 { margin:0 0 .5rem; }
+h2 { font-size:1.15rem; } h3 { font-size:1rem; }
+button, input, select, textarea { font:inherit; color:inherit; }
+input, select, textarea { width:100%; padding:.5rem .6rem; border:1px solid var(--line); border-radius:8px; background:var(--card); }
+button { cursor:pointer; padding:.45rem .8rem; border:1px solid var(--line); border-radius:8px; background:var(--card); }
+button.primary { background:var(--brand); color:var(--brand-ink); border-color:var(--brand); }
+button.danger { color:var(--danger); }
+button.link { border:0; background:none; color:var(--brand); padding:0; }
+button:focus-visible, input:focus-visible, select:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
+.muted { color:var(--muted); font-size:.9rem; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:1rem; }
+.row { display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; }
+.stack > * + * { margin-top:.6rem; }
+
+.auth { max-width:380px; margin:8vh auto; }
+.auth form { display:grid; gap:.6rem; margin-top:.8rem; }
+.tabs { display:flex; gap:.4rem; }
+.tabs button[aria-selected="true"] { background:var(--brand); color:var(--brand-ink); border-color:var(--brand); }
+.error { color:var(--danger); min-height:1.2em; font-size:.9rem; }
+
+header.top { display:flex; justify-content:space-between; align-items:center; padding:.7rem 1.2rem; background:var(--card); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+.layout { display:grid; grid-template-columns:280px 1fr; gap:1rem; padding:1rem 1.2rem; max-width:1200px; margin:0 auto; }
+@media (max-width: 800px) { .layout { grid-template-columns:1fr; } }
+.side { display:grid; gap:1rem; align-content:start; }
+.list { list-style:none; margin:0; padding:0; display:grid; gap:.3rem; }
+.list button { width:100%; text-align:left; }
+.list button[aria-current="true"] { border-color:var(--brand); background:color-mix(in srgb, var(--brand) 12%, var(--card)); }
+.tag { font-size:.75rem; padding:.05rem .45rem; border-radius:99px; border:1px solid var(--line); color:var(--muted); }
+form.inline { display:grid; grid-template-columns:1fr auto; gap:.5rem; }
+
+.bell { position:relative; }
+.badge { position:absolute; top:-6px; right:-6px; background:var(--danger); color:#fff; border-radius:99px; font-size:.7rem; min-width:18px; height:18px; display:grid; place-items:center; padding:0 4px; }
+.panel { position:absolute; right:1.2rem; top:3.4rem; width:min(360px, 92vw); max-height:70vh; overflow:auto; z-index:10; box-shadow:0 8px 28px rgba(0,0,0,.18); }
+.note { padding:.5rem 0; border-bottom:1px solid var(--line); }
+.note.unread { font-weight:600; }
+
+.board { display:grid; grid-template-columns:repeat(3, 1fr); gap:.8rem; }
+@media (max-width: 800px) { .board { grid-template-columns:1fr; } }
+.col { background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:.6rem; min-height:120px; }
+.task { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:.6rem; margin-top:.5rem; display:grid; gap:.35rem; }
+.task .title { font-weight:600; overflow-wrap:anywhere; }
+.task.overdue { border-color:var(--danger); }
+.new-task { display:grid; grid-template-columns:2fr 1fr 1fr auto; gap:.5rem; margin-bottom:1rem; }
+@media (max-width: 800px) { .new-task { grid-template-columns:1fr; } }
+
+#toast { position:fixed; bottom:1rem; left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg); padding:.5rem 1rem; border-radius:8px; opacity:0; transition:opacity .2s; pointer-events:none; }
+#toast.show { opacity:1; }
